@@ -15,12 +15,16 @@ import { ProductState } from 'src/app/store';
 
 //angular material modules
 import { MatCardModule } from '@angular/material/card';
+import { HeaderComponent } from './core/header/header.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductsPageComponent
+    ProductsPageComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +37,7 @@ import { MatCardModule } from '@angular/material/card';
     MatCardModule,
     HttpClientModule,
     NgxsDataPluginModule.forRoot([NGXS_DATA_STORAGE_PLUGIN]),
-
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

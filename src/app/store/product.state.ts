@@ -63,8 +63,8 @@ export class ProductState extends NgxsDataRepository<ProductStateModel>{
   }
 
   /**
-   * Check if products are fetched by verifing the number of products available in 
-   * the state.
+   * Check if products are fetched by verifing the number of products 
+   * available in the state.
    * @returns {boolean}
    */
   private haveFetched(): boolean {

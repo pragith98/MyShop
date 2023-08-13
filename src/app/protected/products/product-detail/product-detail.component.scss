@@ -1,0 +1,22 @@
+.product-detail {
+    width: 800px;
+    margin: 10px auto;
+}
+
+.product {
+    display: flex;
+    flex-direction: row;
+
+    .image-section {
+        img {
+            width: 270px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+    }
+
+    .details-section {
+        margin: 10px;
+    }
+}

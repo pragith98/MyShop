@@ -1,0 +1,23 @@
+<mat-card class="product-detail">
+    <mat-card-header>
+        <mat-card-title class="mat-headline-5">{{product?.title}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="product">
+        <div class="image-section">
+            <img src="{{product?.thumbnail}}" alt="">
+        </div>
+        <div class="details-section">
+            <b>Brand</b>: {{product?.brand}} <br>
+            <b>Description</b>
+            <p>{{product?.description}}</p>
+            <b>Price</b>: {{product?.price | currency}}
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button  mat-button color="primary" 
+            matTooltip="Back to products list" (click)="onClickBack()">
+            <mat-icon>keyboard_backspace</mat-icon>
+            Back
+        </button>
+    </mat-card-actions>
+</mat-card>

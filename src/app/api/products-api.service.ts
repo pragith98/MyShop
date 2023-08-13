@@ -23,7 +23,7 @@ export class ProductsApiService {
 
   /**
    * Retrieves product data by calling API.
-   * @returns {Observable<Post[]>}
+   * @returns {Observable<Product[]>}
    */
   getProducts(): Observable<Product[]> {
     return this.apiProvider.get<ApiResponse>(EndPoints.getAllProducts)
