@@ -1,0 +1,28 @@
+<mat-card class="product-list">
+    <mat-card-header>
+        <mat-card-title>List</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="products-loading-place">
+        
+        <!-- product cards -->
+        <mat-card class="product-card" 
+            *ngFor="let product of productState.getProducts">
+            <img mat-card-image src="{{product.thumbnail}}">
+            <mat-card-content class="product-card-details">
+                <span class="mat-headline-6">{{product.title}}</span>
+                <p>
+                    {{product.brand}} <br>
+                    {{product.category}}
+                </p>
+                <p class="price">{{product.price | currency}}</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button class="see-details-button" mat-stroked-button 
+                    color="primary">
+                    See details
+                </button>
+            </mat-card-actions>
+        </mat-card>
+
+    </mat-card-content>
+</mat-card>
