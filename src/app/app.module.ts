@@ -11,12 +11,18 @@ import { NgxsDataPluginModule } from '@angular-ru/ngxs';
 import { NGXS_DATA_STORAGE_PLUGIN } from '@angular-ru/ngxs/storage';
 
 
-import { ProductState } from 'src/app/store';
+import { 
+  ProductState,
+  AuthState
+} from 'src/app/store';
 
 //angular material modules
 import { MatCardModule } from '@angular/material/card';
 import { HeaderComponent } from './core/header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { UsersPageComponent } from './pages/users-page/users-page.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 
@@ -24,20 +30,24 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   declarations: [
     AppComponent,
     ProductsPageComponent,
-    HeaderComponent
+    HeaderComponent,
+    UsersPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     NgxsModule.forRoot([
-      ProductState
+      ProductState,
+      AuthState
     ]),
     NgxsLoggerPluginModule.forRoot(),
     MatCardModule,
     HttpClientModule,
     NgxsDataPluginModule.forRoot([NGXS_DATA_STORAGE_PLUGIN]),
-    MatToolbarModule
+    MatToolbarModule,
+    MatButtonModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -26,4 +26,24 @@ export class ApiProviderService {
         return throwError(() => 'Error in API call get ' + endpoint);
     }));
   }
+
+  /**
+   * Centerlized API service for  Post requests.
+   * @param endpoint 
+   * @param body 
+   * @returns {Observable}
+   */
+  post<T>(
+      endpoint: string,
+      body: any
+    ): Observable<T> {
+    return this.http.post<T>(
+      `${this.apiBaseAddress}/${endpoint}`,
+      body  
+    )
+    .pipe(catchError((error: HttpErrorResponse) => {
+        console.error(error);
+        return throwError(() => 'Error in API call post ' + endpoint);
+    }));
+  }
 }

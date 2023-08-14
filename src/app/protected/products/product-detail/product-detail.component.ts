@@ -28,7 +28,7 @@ export class ProductDetailComponent implements OnInit {
         this.product = this.service.getSelectedProduct(params['id']));
   }
 
-  onClickBack() {
+  onClickBack(): void {
     this.router.navigate(['']);
   }
 }

@@ -8,6 +8,11 @@ const routes: Routes = [
     component: ProductsPageComponent,
     loadChildren: () => import('./protected/products/products.module')
       .then(module => module.ProductsModule)
+  },
+  {
+    path: 'auth/login',
+    loadChildren: () => import('./protected/auth/auth.module')
+      .then(module => module.AuthModule)
   }
 ];
 

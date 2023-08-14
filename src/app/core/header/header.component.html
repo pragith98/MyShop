@@ -1,4 +1,28 @@
 <mat-toolbar color="primary">
-    <span class="mat-headline1"><b>MyShop</b></span>
-    <span class="example-spacer"></span>
+    <span class="mat-headline1 title" 
+        (click)="onClickTitle()"><b>MyShop</b>
+    </span>
+    <span class="spacer"></span>
+    
+    <ng-container *ngIf="authState.isAuthenticated">
+        <button  mat-button [matMenuTriggerFor]="menu">
+            Hi! {{authState.getAuthUser.firstName}}
+        </button>
+    
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="onClickViewProfile()">
+                View profile
+            </button>
+            <button mat-menu-item (click)="authState.logout()">
+                Logout
+            </button>
+        </mat-menu>
+    </ng-container>
+
+    <ng-container *ngIf="!authState.isAuthenticated">
+        <button  mat-flat-button color="accent" (click)="onClickLoginOrResiter()">
+            Login or Register
+        </button>
+    </ng-container>
+    
 </mat-toolbar>

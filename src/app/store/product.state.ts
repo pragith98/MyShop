@@ -55,11 +55,9 @@ export class ProductState extends NgxsDataRepository<ProductStateModel>{
   @DataAction()
   fetchProducts(): Observable<Product[]> {
     return this.apiService.getProducts()
-      .pipe(tap(products =>{
-        console.debug(products)
-        this.ctx.setState({
-          products: products
-        }) } ));
+      .pipe(tap(products => this.ctx.setState({
+        products: products
+      })));
   }
 
   /**
