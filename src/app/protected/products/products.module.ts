@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProductsRoutingModule } from './products-routing.module';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { ProductDetailService } from './product-detail/product-detail.service';
+import { ProductsService } from './products.service';
 
 //angular material modules
 import { MatCardModule } from '@angular/material/card';
@@ -26,6 +26,6 @@ import { MatIconModule } from '@angular/material/icon';
     MatTooltipModule,
     MatIconModule
   ],
-  providers: [ProductDetailService]
+  providers: [ProductsService]
 })
 export class ProductsModule { }

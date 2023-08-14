@@ -3,7 +3,7 @@ import {
   OnInit
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductDetailService } from './product-detail.service';
+import { ProductsService } from '../products.service';
 import { Product } from 'src/app/types';
 
 
@@ -18,7 +18,7 @@ export class ProductDetailComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private service: ProductDetailService,
+    private service: ProductsService,
     private router: Router
   ) { }
 

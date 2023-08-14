@@ -3,7 +3,7 @@ import { ProductState } from 'src/app/store';
 import { Product } from 'src/app/types';
 
 @Injectable()
-export class ProductDetailService {
+export class ProductsService {
 
     constructor(private productState: ProductState) { }
 
