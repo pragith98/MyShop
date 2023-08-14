@@ -6,7 +6,7 @@
     
     <ng-container *ngIf="authState.isAuthenticated">
         <button  mat-button [matMenuTriggerFor]="menu">
-            <!-- Hi! {{authState.getAuthUser.firstName}} -->
+            Hi! {{userState.getAvailableUser.firstName}}
         </button>
     
         <mat-menu #menu="matMenu">
