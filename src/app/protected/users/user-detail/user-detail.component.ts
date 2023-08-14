@@ -1,27 +1,22 @@
 import { 
   Component,
-  OnInit
 } from '@angular/core';
 import { User } from 'src/app/types';
-import { UserDetailService } from './user-detail.service';
 import { Router } from '@angular/router';
+import { UserState } from 'src/app/store';
 
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.scss']
 })
-export class UserDetailComponent implements OnInit{
-  user?: User | null
+export class UserDetailComponent {
+  user: User = this.userState.getAvailableUser;
 
   constructor(
-    private service: UserDetailService,
+    private userState: UserState,
     private router: Router  
   ) { }
-
-  ngOnInit(): void {
-    // this.user = this.service.getUser();
-  }
 
   onClickUpdate(): void {
     this.router.navigate(

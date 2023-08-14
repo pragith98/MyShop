@@ -4,7 +4,10 @@ import {
   Validators 
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthState } from 'src/app/store/auth.state';
+import { 
+  UserState, 
+  AuthState 
+} from 'src/app/store';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +31,8 @@ export class LoginComponent {
   constructor(
     private nonNullableFormBuilder: NonNullableFormBuilder,
     private authState: AuthState,
-    private router: Router
+    private router: Router,
+    private userState: UserState
   ) { }
   
   onSubmit(): void {
@@ -37,7 +41,8 @@ export class LoginComponent {
         username: this.loginForm.value.username as string, 
         password: this.loginForm.value.password as string, 
       }
-      this.authState.login(formData).subscribe(res => console.debug(res.id))
+      this.authState.login(formData)
+        .subscribe(data => this.userState.getUser(data.id));
     }
   }
 
