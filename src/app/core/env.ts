@@ -5,4 +5,7 @@ export class EndPoints {
 
     //auth endpoints
     static login = 'auth/login';
+
+    //users endpoints
+    static getUserById = 'users';
 }

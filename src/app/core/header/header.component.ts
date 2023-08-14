@@ -15,7 +15,7 @@ export class HeaderComponent {
   ) { }
 
   onClickViewProfile(): void {
-    this.router.navigate(['user']);
+    this.router.navigate(['users']);
   }
 
   onClickTitle(): void {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from 'src/app/types';
+import { AuthUser } from 'src/app/types';
 import { State } from '@ngxs/store';
 import { NgxsDataRepository } from '@angular-ru/ngxs/repositories';
 import { 
@@ -19,7 +19,7 @@ import { AuthenticationApiService } from 'src/app/api/auth-api.service';
 import { LoginCredentials } from 'src/app/types';
 
 
-const defaultUser: User = {
+const defaultUser: AuthUser = {
   id: 0,
   username: '',
   email: '',
@@ -29,7 +29,7 @@ const defaultUser: User = {
 }
 
 interface AuthStateModel {
-  auth: User;
+  auth: AuthUser;
 }
 
 @Persistence([{
@@ -56,10 +56,10 @@ export class AuthState extends NgxsDataRepository<AuthStateModel> {
 
   /**
    * Get current user from state.
-   * @returns {User}
+   * @returns {AuthUser}
    */
   @Computed()
-  get getAuthUser(): User {
+  get getAuthUser(): AuthUser {
     return this.ctx.getState().auth;
   }
 
@@ -81,7 +81,7 @@ export class AuthState extends NgxsDataRepository<AuthStateModel> {
   @DataAction()
   login(
     @Payload('credentials') credentials: LoginCredentials
-  ): Observable<User> {
+  ): Observable<AuthUser> {
     return this.apiService.login(credentials)
       .pipe(tap(auth => {
         this.ctx.setState({

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductsPageComponent } from './pages/products-page/products-page.component';
+import { UsersPageComponent } from './pages/users-page/users-page.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,12 @@ const routes: Routes = [
     path: 'auth/login',
     loadChildren: () => import('./protected/auth/auth.module')
       .then(module => module.AuthModule)
+  },
+  {
+    path: 'users',
+    component: UsersPageComponent,
+    loadChildren: () => import('./protected/users/users.module')
+      .then(module => module.UsersModule)
   }
 ];
 

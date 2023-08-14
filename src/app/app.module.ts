@@ -13,7 +13,8 @@ import { NGXS_DATA_STORAGE_PLUGIN } from '@angular-ru/ngxs/storage';
 
 import { 
   ProductState,
-  AuthState
+  AuthState,
+  UserState
 } from 'src/app/store';
 
 //angular material modules
@@ -39,7 +40,8 @@ import { MatMenuModule } from '@angular/material/menu';
     BrowserAnimationsModule,
     NgxsModule.forRoot([
       ProductState,
-      AuthState
+      AuthState,
+      UserState
     ]),
     NgxsLoggerPluginModule.forRoot(),
     MatCardModule,
