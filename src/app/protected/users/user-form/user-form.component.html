@@ -1,0 +1,63 @@
+<mat-card class="user-form">
+    <mat-card-header>
+        <mat-card-title>{{formAction | titlecase}} account</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <form [formGroup]="userForm">
+            <mat-form-field appearance="outline">
+                <mat-label>First name</mat-label>
+                <input matInput formControlName="firstName">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Last name</mat-label>
+                <input matInput formControlName="lastName">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Telephone</mat-label>
+                <input matInput formControlName="phone">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="address">
+                <mat-label>Address</mat-label>
+                <input matInput formControlName="address">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Username</mat-label>
+                <input matInput formControlName="username">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="password">
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+    <mat-card-actions align="end">
+        <button mat-button matTooltip="Cancel operation" 
+            (click)="navigateBack()">
+            Cancel
+        </button>
+        <button type="submit" mat-flat-button color="primary" 
+            matTooltip="{{formAction}} account" (click)="onClickSubmit()"
+            [disabled]="userForm.invalid">
+            <mat-icon>save</mat-icon>
+            Save
+        </button>
+    </mat-card-actions>
+
+</mat-card>
+<div class="login-button" *ngIf="formAction === 'create'">
+    <button mat-button (click)="navigateBack()"
+        matTooltip="Login to the account">
+        Already have an account? Login
+    </button>
+</div>

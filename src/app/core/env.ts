@@ -8,4 +8,7 @@ export class EndPoints {
 
     //users endpoints
     static getUserById = 'users';
+    static createUser = 'users/add';
+    static updateUser = 'users';
+
 }

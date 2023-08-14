@@ -13,7 +13,8 @@
             <button mat-menu-item (click)="onClickViewProfile()">
                 View profile
             </button>
-            <button mat-menu-item (click)="authState.logout()">
+            <button mat-menu-item 
+                (click)="authState.logout(); userState.resetUser()">
                 Logout
             </button>
         </mat-menu>

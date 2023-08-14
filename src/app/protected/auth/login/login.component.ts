@@ -3,6 +3,7 @@ import {
   NonNullableFormBuilder, 
   Validators 
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthState } from 'src/app/store/auth.state';
 
 @Component({
@@ -26,7 +27,8 @@ export class LoginComponent {
 
   constructor(
     private nonNullableFormBuilder: NonNullableFormBuilder,
-    private authState: AuthState  
+    private authState: AuthState,
+    private router: Router
   ) { }
   
   onSubmit(): void {
@@ -37,5 +39,12 @@ export class LoginComponent {
       }
       this.authState.login(formData)
     }
+  }
+
+  onClickRegister(): void {
+    this.router.navigate(
+      ['users/form'],
+      {queryParams:{action: 'create'}}
+    );
   }
 }

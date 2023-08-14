@@ -1,0 +1,23 @@
+.user-form {
+    width: 552px;
+    margin: 10px auto;
+
+    form {
+        flex-wrap: wrap;
+        gap: 20px;
+        mat-form-field {
+            width: 250px;
+            margin: 0 5px;
+        }
+        
+        .address {
+            width: 510px;
+        }
+        flex-direction: column;
+    }
+}
+
+.login-button {
+    margin-top: 3px;
+    text-align: center;
+}

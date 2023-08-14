@@ -10,10 +10,10 @@ export class UserDetailService {
 
   constructor(
     private authState: AuthState,
-    private userState: UserState ,
+    private userState: UserState,
   ) { }
 
-  getUser(): User|null {
+  getUser(): User | null {
     const loggedUserId = this.authState.getAuthUser.id;
     this.userState.getUser(loggedUserId);
     return this.userState.getAvailableUser;

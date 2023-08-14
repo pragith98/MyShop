@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthState, ProductState, UserState } from './store';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'MyShop';
+
+  constructor(
+    private productState: ProductState,
+  ) { 
+    this.productState.getAllProducts();
+  }
 }

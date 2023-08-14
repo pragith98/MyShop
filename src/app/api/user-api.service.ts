@@ -3,16 +3,8 @@ import { ApiProviderService } from '../core/apiProvider.service';
 import { User } from 'src/app/types';
 import { EndPoints } from 'src/app/core/env';
 import { 
-  map,
   Observable
 } from 'rxjs';
-
-// interface ApiResponse {
-//   products: any[],
-//   total: number,
-//   skip: number,
-//   limit: number
-// }
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +21,31 @@ export class UserApiService {
     return this.apiProvider.get(
       `${EndPoints.getUserById}/${id}`
     )
+  }
+
+  /**
+   * Create user by calling API with provided data and retrieve created user 
+   * @param body 
+   * @returns {Observable<User>}
+   */
+  createUser(body: User): Observable<User> {
+    return this.apiProvider.post<any>(
+      EndPoints.createUser, 
+      body
+    );
+  }
+
+  /**
+   * Update user by calling API with provided data and retrieve updated user.
+   * @param id 
+   * @param body 
+   * @returns {Observable<User>}
+   */
+  updateUser(id: number, body: any): Observable<User> {
+    return this.apiProvider.update<any>(
+      `${EndPoints.updateUser}/${id}`,
+      body
+    );
   }
 
 

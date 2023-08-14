@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthState } from 'src/app/store';
+import { AuthState, UserState } from 'src/app/store';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +11,8 @@ export class HeaderComponent {
 
   constructor(
     private router: Router,
-    public authState: AuthState  
+    public authState: AuthState,
+    public userState: UserState 
   ) { }
 
   onClickViewProfile(): void {

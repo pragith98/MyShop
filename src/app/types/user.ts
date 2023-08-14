@@ -9,7 +9,6 @@ export interface AuthUser {
 
 export interface User extends AuthUser{
     phone: string,
-    gender: string,
     address: {
         address: string
     }

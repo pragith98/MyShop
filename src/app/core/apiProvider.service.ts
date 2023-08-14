@@ -46,4 +46,21 @@ export class ApiProviderService {
         return throwError(() => 'Error in API call post ' + endpoint);
     }));
   }
+
+  /**
+   * Centerlized API service for Patch requests.
+   * @param endpoint 
+   * @param body 
+   * @returns {Observable}
+   */
+  update<T>(endpoint: string, body: any): Observable<T> {
+    return this.http.patch<T>(
+      `${this.apiBaseAddress}/${endpoint}`,
+      body
+    ).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.debug(error);
+        return throwError(() => 'Error in API call update ' + endpoint);
+      }));
+  }
 }
