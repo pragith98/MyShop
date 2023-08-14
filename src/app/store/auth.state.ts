@@ -17,14 +17,12 @@ import {
 import { AuthenticationApiService } from 'src/app/api/auth-api.service';
 
 import { LoginCredentials } from 'src/app/types';
+import { Router } from '@angular/router';
 
 
-const defaultUser: AuthUser = {
+const defaultAuth: AuthUser = {
   id: 0,
   username: '',
-  email: '',
-  firstName: '',
-  lastName: '',
   token: ''
 }
 
@@ -40,7 +38,7 @@ interface AuthStateModel {
 @State<AuthStateModel>({
   name: 'auth',
   defaults: {
-    auth: defaultUser
+    auth: defaultAuth
   }
 })
 
@@ -49,7 +47,8 @@ export class AuthState extends NgxsDataRepository<AuthStateModel> {
 
   constructor(
     private apiService: AuthenticationApiService,
-    private location: Location
+    private location: Location,
+    private router: Router
   ) {
     super();
   }
@@ -92,11 +91,13 @@ export class AuthState extends NgxsDataRepository<AuthStateModel> {
   }
 
   /**
-   * Logout current logged user by resetting the state 
+   * Logout current logged user by resetting the state and navigate to the
+   * 'home' page 
    */
   @DataAction()
   logout(): void {
     this.reset();
+    this.router.navigate(['']);
   }
 
 }

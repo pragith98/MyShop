@@ -16,8 +16,20 @@ import {
 import { UserApiService } from '../api/user-api.service';
 import { Router } from '@angular/router';
 
+const defaultUser: User = {
+  id: 0,
+  username: '',
+  email: '',
+  firstName: '',
+  lastName: '',
+  phone: '',
+  address: {
+    address: ''
+  }
+}
+
 interface UserStateModel {
-  user: User | null
+  user: User
 }
 
 @Persistence([{
@@ -28,7 +40,7 @@ interface UserStateModel {
 @State<UserStateModel>({
   name: 'user',
   defaults: {
-    user: null
+    user: defaultUser
   }
 })
 
@@ -48,7 +60,7 @@ export class UserState extends NgxsDataRepository<UserStateModel>{
    * Retrieves user from current state.
    */
     @Computed()
-    get getAvailableUser(): User | null {
+    get getAvailableUser(): User {
       return this.ctx.getState().user;
     }
 
@@ -64,11 +76,11 @@ export class UserState extends NgxsDataRepository<UserStateModel>{
   }
 
   /**
-   * Check if user are fetched by verifing nullable of user state 
+   * Check if user are fetched by verifing id of user state 
    * @returns {boolean}
    */
   private haveFetched(): boolean {
-    return this.ctx.getState().user !== null;
+    return this.ctx.getState().user.id !== 0;
   }
 
   /**
@@ -124,12 +136,7 @@ export class UserState extends NgxsDataRepository<UserStateModel>{
         this.ctx.patchState({
           user
         });
-          
-        this.router.navigate(
-          [
-            'users',
-            id
-          ]);
+        this.router.navigate(['users']);
       }));
   }
 }
