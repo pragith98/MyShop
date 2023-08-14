@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Auth } from 'src/app/types';
-import { State } from '@ngxs/store';
+import { 
+  NgxsOnChanges,
+  State
+} from '@ngxs/store';
 import { NgxsDataRepository } from '@angular-ru/ngxs/repositories';
 import { 
   tap, 
   Observable 
 } from 'rxjs';
-import { Location } from '@angular/common';
 import { 
   Computed, 
   DataAction, 
@@ -41,11 +43,11 @@ interface AuthStateModel {
 })
 
 @Injectable()
-export class AuthState extends NgxsDataRepository<AuthStateModel> {
+export class AuthState extends NgxsDataRepository<AuthStateModel> 
+  implements NgxsOnChanges {
 
   constructor(
     private apiService: AuthenticationApiService,
-    private location: Location,
     private router: Router
   ) {
     super();
@@ -87,16 +89,21 @@ export class AuthState extends NgxsDataRepository<AuthStateModel> {
             isAuthenticated: true
           }
         });
-        this.location.back();
       }));
   }
 
   /**
-   * Remove authentication data and navigate to 'home' page 
+   * Remove authentication data. 
    */
   @DataAction()
   logout(): void {
     this.reset();
+  }
+
+  /**
+   * after chage the state, navigate to 'home' page.
+   */
+  public override ngxsOnChanges(): void {
     this.router.navigate(['']);
   }
 

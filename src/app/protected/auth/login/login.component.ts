@@ -37,7 +37,7 @@ export class LoginComponent {
         username: this.loginForm.value.username as string, 
         password: this.loginForm.value.password as string, 
       }
-      this.authState.login(formData)
+      this.authState.login(formData).subscribe(res => console.debug(res.id))
     }
   }
 
