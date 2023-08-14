@@ -20,7 +20,7 @@ export class UserDetailComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
-    this.user = this.service.getUser();
+    // this.user = this.service.getUser();
   }
 
   onClickUpdate(): void {

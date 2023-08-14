@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApiProviderService } from '../core/apiProvider.service';
 import { 
   LoginCredentials, 
-  AuthUser 
+  Auth 
 } from 'src/app/types';
 import { EndPoints } from 'src/app/core/env';
 import { 
@@ -19,9 +19,9 @@ export class AuthenticationApiService {
 
   /**
    * login to the system by calling API.
-   * @returns {Observable<AuthUser[]>}
+   * @returns {Observable<Auth>}
    */
-  login(loginCredentials: LoginCredentials): Observable<AuthUser> {
+  login(loginCredentials: LoginCredentials): Observable<Auth> {
     return this.apiProvider.post(
       EndPoints.login,
       loginCredentials

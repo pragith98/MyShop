@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AuthUser } from 'src/app/types';
+import { Auth } from 'src/app/types';
 import { State } from '@ngxs/store';
 import { NgxsDataRepository } from '@angular-ru/ngxs/repositories';
 import { 
@@ -19,16 +19,10 @@ import { AuthenticationApiService } from 'src/app/api/auth-api.service';
 import { LoginCredentials } from 'src/app/types';
 import { Router } from '@angular/router';
 
-
-const defaultAuth: AuthUser = {
-  id: 0,
-  username: '',
-  token: ''
-}
-
 interface AuthStateModel {
-  auth: AuthUser;
+  auth: Auth;
 }
+
 
 @Persistence([{
   path: 'auth',
@@ -38,7 +32,11 @@ interface AuthStateModel {
 @State<AuthStateModel>({
   name: 'auth',
   defaults: {
-    auth: defaultAuth
+    auth: {
+      id: 0,
+      token: '',
+      isAuthenticated: false
+    }
   }
 })
 
@@ -54,45 +52,47 @@ export class AuthState extends NgxsDataRepository<AuthStateModel> {
   }
 
   /**
-   * Get current user from state.
-   * @returns {AuthUser}
+   * Get current auth data from state.
+   * @returns {Auth}
    */
   @Computed()
-  get getAuthUser(): AuthUser {
+  get getAuth(): Auth {
     return this.ctx.getState().auth;
   }
 
   /**
-   * Check if current user is authenticated by verifing the availability of 
-   * user's token in the state.
+   * Check if current user is authenticated by verifing the vale of 
+   * 'isAuthenticated'
    * @returns {boolean}
    */
   @Computed()
   get isAuthenticated(): boolean{
-    return this.ctx.getState().auth.token !== '';
+    return this.ctx.getState().auth.isAuthenticated;
   }
 
   /**
    * Perform user login by using provided login credentials.
-   * If login is successful, store logged user data in the state.
+   * If login is successful, store auth data in the state.
    * @param credentials 
    */
   @DataAction()
   login(
     @Payload('credentials') credentials: LoginCredentials
-  ): Observable<AuthUser> {
+  ): Observable<Auth> {
     return this.apiService.login(credentials)
       .pipe(tap(auth => {
         this.ctx.setState({
-          auth
+          auth: {
+            ...auth, 
+            isAuthenticated: true
+          }
         });
         this.location.back();
       }));
   }
 
   /**
-   * Logout current logged user by resetting the state and navigate to the
-   * 'home' page 
+   * Remove authentication data and navigate to 'home' page 
    */
   @DataAction()
   logout(): void {
