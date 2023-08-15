@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserState } from 'src/app/store';
 import { User } from 'src/app/types';
 
 @Injectable()
 export class UsersService {
 
-  constructor(private userState: UserState) { }
+  constructor(
+    private userState: UserState,
+    private router: Router  
+  ) { }
 
   /**
    * Submit form data to create or update user. If form data has no ID, 
@@ -29,10 +33,12 @@ export class UsersService {
   }
 
   private createUser(user: User): void {
-    this.userState.createUser(user);
+    this.userState.createUser(user)
+      .subscribe(() => this.router.navigate(['']));
   }
 
   private updateUser(id: number, user: User): void {
-    this.userState.updateUser(id, user);
+    this.userState.updateUser(id, user)
+      .subscribe(() => this.router.navigate(['users']));
   }
 }

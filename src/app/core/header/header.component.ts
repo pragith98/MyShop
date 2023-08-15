@@ -12,7 +12,7 @@ export class HeaderComponent {
   constructor(
     private router: Router,
     public authState: AuthState,
-    public userState: UserState 
+    public userState: UserState,
   ) { }
 
   onClickViewProfile(): void {
@@ -20,11 +20,21 @@ export class HeaderComponent {
   }
 
   onClickTitle(): void {
-    this.router.navigate(['']);
+    this.navigateToHome();
   }
 
   onClickLoginOrResiter(): void {
     this.router.navigate(['auth/login']);
+  }
+
+  onClickLogout(): void {
+    this.authState.logout();
+    this.userState.resetUser();
+    this.navigateToHome();
+  }
+  
+  private navigateToHome(): void {
+    this.router.navigate([''])
   }
 
 }

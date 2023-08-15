@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Auth } from 'src/app/types';
 import { 
-  NgxsOnChanges,
   State
 } from '@ngxs/store';
 import { NgxsDataRepository } from '@angular-ru/ngxs/repositories';
@@ -17,9 +16,7 @@ import {
   StateRepository 
 } from '@angular-ru/ngxs/decorators';
 import { AuthenticationApiService } from 'src/app/api/auth-api.service';
-
 import { LoginCredentials } from 'src/app/types';
-import { Router } from '@angular/router';
 
 interface AuthStateModel {
   auth: Auth;
@@ -43,13 +40,9 @@ interface AuthStateModel {
 })
 
 @Injectable()
-export class AuthState extends NgxsDataRepository<AuthStateModel> 
-  implements NgxsOnChanges {
+export class AuthState extends NgxsDataRepository<AuthStateModel> {
 
-  constructor(
-    private apiService: AuthenticationApiService,
-    private router: Router
-  ) {
+  constructor(private apiService: AuthenticationApiService) {
     super();
   }
 
@@ -93,18 +86,11 @@ export class AuthState extends NgxsDataRepository<AuthStateModel>
   }
 
   /**
-   * Remove authentication data. 
+   * Remove authentication data.  
    */
   @DataAction()
   logout(): void {
     this.reset();
-  }
-
-  /**
-   * after chage the state, navigate to 'home' page.
-   */
-  public override ngxsOnChanges(): void {
-    this.router.navigate(['']);
   }
 
 }

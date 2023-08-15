@@ -9,7 +9,7 @@
             *ngFor="let product of productState.getProducts">
             <img mat-card-image src="{{product.thumbnail}}">
             <mat-card-content class="product-card-details">
-                <span class="mat-headline-6">{{product.title}}</span>
+                <span class="mat-headline-6">{{product.title | textShorter: 25}}</span>
                 <p>
                     {{product.brand}} <br>
                     {{product.category}}

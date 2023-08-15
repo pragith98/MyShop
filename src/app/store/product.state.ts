@@ -76,8 +76,7 @@ export class ProductState extends NgxsDataRepository<ProductStateModel>{
    */
   @DataAction()
   getAllProducts(): void {
-    if (!this.haveFetched()) {
+    if (!this.haveFetched())
       this.fetchProducts();
-    }
   }
 }

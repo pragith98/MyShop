@@ -14,14 +14,15 @@
                 View profile
             </button>
             <button mat-menu-item 
-                (click)="authState.logout(); userState.resetUser()">
+                (click)="onClickLogout()">
                 Logout
             </button>
         </mat-menu>
     </ng-container>
 
     <ng-container *ngIf="!authState.isAuthenticated">
-        <button  mat-flat-button color="accent" (click)="onClickLoginOrResiter()">
+        <button  mat-flat-button color="accent" 
+            (click)="onClickLoginOrResiter()">
             Login or Register
         </button>
     </ng-container>

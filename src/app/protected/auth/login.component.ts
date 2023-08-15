@@ -42,7 +42,10 @@ export class LoginComponent {
         password: this.loginForm.value.password as string, 
       }
       this.authState.login(formData)
-        .subscribe(data => this.userState.getUser(data.id));
+        .subscribe(data => {
+          this.userState.getUser(data.id);
+          this.router.navigate(['']);
+        });
     }
   }
 

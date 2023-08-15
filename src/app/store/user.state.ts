@@ -49,10 +49,7 @@ interface UserStateModel {
 })
 export class UserState extends NgxsDataRepository<UserStateModel>{
 
-  constructor(
-    private apiService: UserApiService,
-    private router: Router
-  ) {
+  constructor( private apiService: UserApiService) {
     super();
   }
 
@@ -103,7 +100,7 @@ export class UserState extends NgxsDataRepository<UserStateModel>{
 
   /**
    * Performs user-creation by providing user data. if creation is successful,
-   * add new user to the state and the application navigate to 'home' page.
+   * add new user to the state.
    * @param user 
    * @returns {Observable<User>}
    */
@@ -114,14 +111,13 @@ export class UserState extends NgxsDataRepository<UserStateModel>{
         this.ctx.setState({
           user
         });
-        this.router.navigate(['']);
       }));
   }
 
   /**
    * Performs user updating by providing user id and user data. if the updating 
    * is successful, the previous user in state is replaced with the new
-   * updated user and the application navigate to 'user profile' page.
+   * updated user.
    * @param id 
    * @param user 
    * @returns {Observable<User>}
@@ -136,7 +132,6 @@ export class UserState extends NgxsDataRepository<UserStateModel>{
         this.ctx.patchState({
           user
         });
-        this.router.navigate(['users']);
       }));
   }
 }
