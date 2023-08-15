@@ -104,6 +104,7 @@ export class UserState extends NgxsDataRepository<UserStateModel>{
    * @param user 
    * @returns {Observable<User>}
    */
+  //TODO: remove function. don't need to store created user in state
   @DataAction()
   createUser(@Payload('user') user: User): Observable<User> {
     return this.apiService.createUser(user)

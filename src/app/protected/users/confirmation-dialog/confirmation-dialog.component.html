@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>{{confirmationDetails.action}} confirmation</h1>
+<div mat-dialog-content>
+    <p class="content">
+        Are you sure you want to {{confirmationDetails.message}} this? <br>
+        <b>"{{content}}"</b>
+    </p>
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-flat-button mat-dialog-close>Cancel</button>
+    <button mat-flat-button (click)="onClickConfirm()" cdkFocusInitial
+        color="{{confirmationDetails.confirmationButtonColor}}">
+        {{confirmationDetails.confirmationButtonText}}
+    </button>
+</div>
