@@ -1,0 +1,12 @@
+@mixin card-position {
+    margin: 10px auto
+}
+
+// card with form
+@mixin form-card {
+    @include card-position;
+
+    mat-card-content {
+        margin-top: 10px;
+    }
+}

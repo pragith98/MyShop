@@ -1,6 +1,9 @@
+@import '../../../scss/card-style';
+
 .login-form {
+    @include form-card;
+    
     width: 30%;
-    margin: 10px auto;
 
     form {
         display: flex;

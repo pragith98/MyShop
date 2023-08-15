@@ -1,6 +1,9 @@
+@import '../../../../scss/card-style';
+
 .product-detail {
+    @include card-position;
+
     width: 800px;
-    margin: 10px auto;
 }
 
 .product {

@@ -1,4 +1,7 @@
+@import '../../../../scss/card-style';
+
 .user-details {
+    @include card-position;
+
     width: 50%;
-    margin: 10px auto;
 }

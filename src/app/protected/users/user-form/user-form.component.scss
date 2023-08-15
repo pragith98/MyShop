@@ -1,6 +1,9 @@
+@import '../../../../scss/card-style';
+
 .user-form {
+    @include form-card;
+
     width: 552px;
-    margin: 10px auto;
 
     form {
         flex-wrap: wrap;
