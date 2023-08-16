@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Auth } from 'src/app/types';
+// import { Auth } from '../public/types'; 
 import { 
   State
 } from '@ngxs/store';
@@ -15,8 +15,11 @@ import {
   Persistence, 
   StateRepository 
 } from '@angular-ru/ngxs/decorators';
-import { AuthenticationApiService } from 'src/app/api/auth-api.service';
-import { LoginCredentials } from 'src/app/types';
+import { AuthenticationApiService } from '../public/apis/auth-api.service';
+import { 
+  LoginCredentials,
+  Auth 
+} from '../public/types'; 
 
 interface AuthStateModel {
   auth: Auth;

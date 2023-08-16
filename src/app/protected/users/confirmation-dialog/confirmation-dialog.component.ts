@@ -9,6 +9,7 @@ interface ConfirmationDetails {
   content: any
 }
 
+
 @Component({
   selector: 'app-confirmation-dialog',
   templateUrl: './confirmation-dialog.component.html',

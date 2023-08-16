@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { UserState } from 'src/app/store';
-import { User } from 'src/app/types';
+import { User } from 'src/app/public/types';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { 
   Observable,

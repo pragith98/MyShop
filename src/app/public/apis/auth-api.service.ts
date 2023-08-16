@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { ApiProviderService } from '../core/apiProvider.service';
+import { ApiProviderService } from 'src/app/core/services/apiProvider.service'; 
 import { 
   LoginCredentials, 
   Auth 
-} from 'src/app/types';
+} from 'src/app/public/types';
 import { EndPoints } from 'src/app/core/env';
 import { 
   Observable

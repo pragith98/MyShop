@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ProductState } from 'src/app/store';
-import { Product } from 'src/app/types';
+import { Product } from 'src/app/public/types';
 
 @Injectable()
 export class ProductsService {

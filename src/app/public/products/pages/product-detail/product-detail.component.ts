@@ -3,8 +3,8 @@ import {
   OnInit
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductsService } from '../products.service';
-import { Product } from 'src/app/types';
+import { ProductsService } from '../../products.service';
+import { Product } from 'src/app/public/types';
 
 
 @Component({

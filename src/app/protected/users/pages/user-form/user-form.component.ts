@@ -7,7 +7,7 @@ import {
   Validators
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { UsersService } from '../users.service';
+import { UsersService } from '../../users.service';
 import { UserState } from 'src/app/store';
 import { Location } from '@angular/common';
 

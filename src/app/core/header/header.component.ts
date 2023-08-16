@@ -19,12 +19,20 @@ export class HeaderComponent {
     this.router.navigate(['users']);
   }
 
-  onClickTitle(): void {
-    this.navigateToHome();
+  onClickCart(): void {
+    this.router.navigate(['carts']);
   }
-
+  
   onClickLoginOrResiter(): void {
     this.router.navigate(['auth/login']);
+  }
+  
+  private navigateToHome(): void {
+    this.router.navigate([''])
+  }
+
+  onClickTitle(): void {
+    this.navigateToHome();
   }
 
   onClickLogout(): void {
@@ -33,8 +41,5 @@ export class HeaderComponent {
     this.navigateToHome();
   }
   
-  private navigateToHome(): void {
-    this.router.navigate([''])
-  }
 
 }

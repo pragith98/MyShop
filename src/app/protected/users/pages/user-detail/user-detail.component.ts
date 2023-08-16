@@ -1,7 +1,7 @@
 import { 
   Component,
 } from '@angular/core';
-import { User } from 'src/app/types';
+import { User } from 'src/app/public/types';
 import { Router } from '@angular/router';
 import { UserState } from 'src/app/store';
 

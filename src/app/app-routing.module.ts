@@ -1,13 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductsPageComponent } from './pages/products-page/products-page.component';
-import { UsersPageComponent } from './pages/users-page/users-page.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ProductsPageComponent,
-    loadChildren: () => import('./protected/products/products.module')
+    loadChildren: () => import('./public/products/products.module')
       .then(module => module.ProductsModule)
   },
   {
@@ -17,9 +14,13 @@ const routes: Routes = [
   },
   {
     path: 'users',
-    component: UsersPageComponent,
     loadChildren: () => import('./protected/users/users.module')
       .then(module => module.UsersModule)
+  },
+  {
+    path: 'carts',
+    loadChildren: () => import('./protected/carts/carts.module')
+      .then(module => module.CartsModule)
   }
 ];
 

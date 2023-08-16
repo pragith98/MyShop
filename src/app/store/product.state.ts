@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Product } from 'src/app/types';
+import { Product } from '../public/types';
 import { State } from '@ngxs/store';
 import { NgxsDataRepository } from '@angular-ru/ngxs/repositories';
 import { 
@@ -8,7 +8,7 @@ import {
   Computed,
   DataAction
 } from '@angular-ru/ngxs/decorators'
-import { ProductsApiService } from '../api/products-api.service';
+import { ProductsApiService } from '../public/apis/products-api.service';
 import { 
   tap,
   Observable 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from 'src/app/types';
+import { User } from '../public/types';
 import { State } from '@ngxs/store';
 import { NgxsDataRepository } from '@angular-ru/ngxs/repositories';
 import {
@@ -13,8 +13,7 @@ import {
   tap,
   Observable
 } from 'rxjs';
-import { UserApiService } from '../api/user-api.service';
-import { Router } from '@angular/router';
+import { UserApiService } from '../public/apis/user-api.service';
 
 const defaultUser: User = {
   id: 0,
