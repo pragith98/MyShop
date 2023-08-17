@@ -8,13 +8,16 @@ import {
   UserState, 
   AuthState 
 } from 'src/app/store';
+import { User } from '../types';
+import { ConfirmationService } from 'src/app/core/services/confirmation.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-auth',
+  templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.scss']
 })
-export class LoginComponent {
+export class AuthComponent {
+  isRegister = false;
   hide = true;
 
   loginForm = this.nonNullableFormBuilder.group({
@@ -32,10 +35,11 @@ export class LoginComponent {
     private nonNullableFormBuilder: NonNullableFormBuilder,
     private authState: AuthState,
     private router: Router,
-    private userState: UserState
+    private userState: UserState,
+    private confirmation: ConfirmationService
   ) { }
   
-  onSubmit(): void {
+  onClickLogin(): void {
     if(this.loginForm.valid) {
       const formData = {
         username: this.loginForm.value.username as string, 
@@ -50,9 +54,19 @@ export class LoginComponent {
   }
 
   onClickRegister(): void {
-    this.router.navigate(
-      ['users/form'],
-      {queryParams:{action: 'create'}}
-    );
+    this.isRegister = true;
+  }
+
+  createUser(formData: User): void {
+    this.confirmation.getConfirmation(formData.firstName,'create')
+      .subscribe(response => {
+        if(response === true)
+        this.userState.createUser(formData)
+          .subscribe(() => this.router.navigate(['']));
+      })
+  }
+
+  onCanceled() {
+    this.isRegister = false;
   }
 }

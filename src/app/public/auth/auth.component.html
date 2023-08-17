@@ -1,9 +1,9 @@
-<mat-card class="login-form">
+<mat-card class="login-form" *ngIf="!isRegister">
     <mat-card-header>
         <mat-card-title>Login</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="loginForm">
             <mat-form-field appearance="outline">
                 <mat-label>Enter your username</mat-label>
                 <input matInput formControlName="username">
@@ -22,7 +22,7 @@
             </mat-form-field>
             <button type="submit"  mat-flat-button color="primary" 
                 matTooltip="Login to the account" 
-                [disabled]="loginForm.invalid">
+                [disabled]="loginForm.invalid" (click)="onClickLogin()">
                 Login
             </button>
         </form>
@@ -34,3 +34,6 @@
         </div>
     </mat-card-content>
 </mat-card>
+
+<app-user-form [formAction]="'Register'" (formData)='createUser($event)' 
+(isCanceled)='onCanceled()' *ngIf="isRegister"></app-user-form>

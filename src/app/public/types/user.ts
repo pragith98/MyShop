@@ -7,5 +7,6 @@ export interface User {
     phone: string,
     address: {
         address: string
-    }
+    },
+    password: string
 }

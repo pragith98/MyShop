@@ -24,7 +24,7 @@ export class HeaderComponent {
   }
   
   onClickLoginOrResiter(): void {
-    this.router.navigate(['auth/login']);
+    this.router.navigate(['auth']);
   }
   
   private navigateToHome(): void {

@@ -19,10 +19,7 @@ export class UserDetailComponent {
   ) { }
 
   onClickUpdate(): void {
-    this.router.navigate(
-      ['users/form'],
-      {queryParams: {action: 'update'}}
-    );
+    this.router.navigate(['users/update']);
   }
 
 }

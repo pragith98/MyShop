@@ -8,8 +8,6 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxsDataPluginModule } from '@angular-ru/ngxs';
 import { NGXS_DATA_STORAGE_PLUGIN } from '@angular-ru/ngxs/storage';
-
-
 import { 
   ProductState,
   AuthState,

@@ -24,7 +24,8 @@ const defaultUser: User = {
   phone: '',
   address: {
     address: ''
-  }
+  },
+  password: ''
 }
 
 interface UserStateModel {

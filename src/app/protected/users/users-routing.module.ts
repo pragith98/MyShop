@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserDetailComponent } from './pages/user-detail/user-detail.component';
-import { UserFormComponent } from './pages/user-form/user-form.component';
+import { UserUpdateComponent } from './pages/user-update.component';
 import { UsersComponent } from './users.component';
 
 const routes: Routes = [
@@ -14,8 +14,8 @@ const routes: Routes = [
         component: UserDetailComponent
       },
       {
-        path: 'form',
-        component: UserFormComponent
+        path: 'update',
+        component: UserUpdateComponent
       }
     ]
   },

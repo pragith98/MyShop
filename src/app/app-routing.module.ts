@@ -8,8 +8,8 @@ const routes: Routes = [
       .then(module => module.ProductsModule)
   },
   {
-    path: 'auth/login',
-    loadChildren: () => import('./protected/auth/auth.module')
+    path: 'auth',
+    loadChildren: () => import('./public/auth/auth.module')
       .then(module => module.AuthModule)
   },
   {
