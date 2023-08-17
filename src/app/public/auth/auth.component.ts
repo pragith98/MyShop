@@ -60,9 +60,9 @@ export class AuthComponent {
   createUser(formData: User): void {
     this.confirmation.getConfirmation(formData.firstName,'create')
       .subscribe(response => {
-        if(response === true)
-        this.userState.createUser(formData)
-          .subscribe(() => this.router.navigate(['']));
+        if(response)
+          this.userState.createUser(formData)
+            .subscribe(() => this.router.navigate(['']));
       })
   }
 

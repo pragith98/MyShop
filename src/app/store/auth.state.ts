@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-// import { Auth } from '../public/types'; 
 import { 
   State
 } from '@ngxs/store';
@@ -19,7 +18,7 @@ import { AuthenticationApiService } from '../public/apis/auth-api.service';
 import { 
   LoginCredentials,
   Auth 
-} from '../public/types'; 
+} from 'src/app/public/types'; 
 
 interface AuthStateModel {
   auth: Auth;

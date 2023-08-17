@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../public/types';
+import { Product } from 'src/app/public/types';
 import { State } from '@ngxs/store';
 import { NgxsDataRepository } from '@angular-ru/ngxs/repositories';
 import { 

@@ -32,17 +32,17 @@ export class UserUpdateComponent implements OnInit {
   updateUser(formData: User): void {
     this.confirmation.getConfirmation(formData.firstName,'update')
       .subscribe(response => {
-        if(response === true)
-        this.userState.updateUser(formData.id, formData)
-          .subscribe(() => this.navigateUser());
+        if(response)
+          this.userState.updateUser(formData.id, formData)
+            .subscribe(() => this.navigateToUser());
       });
   }
 
   onCanceled() {
-    this.navigateUser();
+    this.navigateToUser();
   }
 
-  private navigateUser() {
+  private navigateToUser() {
     this.router.navigate(['users']);
   }
 
