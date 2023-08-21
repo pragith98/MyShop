@@ -11,7 +11,8 @@ import { NGXS_DATA_STORAGE_PLUGIN } from '@angular-ru/ngxs/storage';
 import { 
   ProductState,
   AuthState,
-  UserState
+  UserState,
+  CartState
 } from 'src/app/store';
 import { CoreModule } from './core/core.module';
 
@@ -28,7 +29,8 @@ import { CoreModule } from './core/core.module';
     NgxsModule.forRoot([
       ProductState,
       AuthState,
-      UserState
+      UserState,
+      CartState
     ]),
     NgxsLoggerPluginModule.forRoot(),
     HttpClientModule,

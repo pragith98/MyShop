@@ -11,4 +11,8 @@ export class EndPoints {
     static createUser = 'users/add';
     static updateUser = 'users';
 
+    //carts endpoints
+    static getCartByUserID = 'carts/user';
+    static addCart = 'carts/add';
+    static updateCart = 'carts/1';
 }

@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>{{confirmationDetails.action}} confirmation</h1>
 <div mat-dialog-content>
     <p class="content">
-        Are you sure you want to {{confirmationDetails.message}} this? <br>
+        Are you sure you want to {{confirmationDetails.message}} <br>
         <b>"{{content}}"</b>
     </p>
 </div>
@@ -10,5 +10,8 @@
     <button mat-flat-button (click)="onClickConfirm()" cdkFocusInitial
         color="{{confirmationDetails.confirmationButtonColor}}">
         {{confirmationDetails.confirmationButtonText}}
+        <mat-icon *ngIf="confirmationDetails?.confirmationButtonIcon">
+            {{confirmationDetails.confirmationButtonIcon}}
+        </mat-icon>
     </button>
 </div>

@@ -11,6 +11,37 @@
             <b>Description</b>
             <p>{{product?.description}}</p>
             <b>Price</b>: {{product?.price | currency}}
+
+            <div class="add-to-cart-section" *ngIf="authState.isAuthenticated">
+                <table>
+                    <tr>
+                        <td class="quantity-section">
+                            <app-quantity-stepper 
+                                [quantity]="quantity" 
+                                [stock]="stock" 
+                                (value)="setProductValues($event)">
+                            </app-quantity-stepper>
+                        </td>
+                        <td>
+                            <span class="mat-headline-6">Total: </span> 
+                            <span class="mat-headline-5"> 
+                                {{total | currency}}
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button class="add-cart-button"  mat-flat-button 
+                                color="accent" matTooltip="Add item to cart" 
+                                (click)="onClickAddToCart()">
+                                <mat-icon>add_shopping_cart</mat-icon>
+                                Add to cart
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
         </div>
     </mat-card-content>
     <mat-card-actions>

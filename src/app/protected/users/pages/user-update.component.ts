@@ -38,11 +38,11 @@ export class UserUpdateComponent implements OnInit {
       });
   }
 
-  onCanceled() {
+  onCanceled(): void {
     this.navigateToUser();
   }
 
-  private navigateToUser() {
+  private navigateToUser(): void {
     this.router.navigate(['users']);
   }
 

@@ -16,6 +16,7 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { UserFormService } from './user-form/user-form.service';
+import { QuantityStepperComponent } from './quantity-stepper/quantity-stepper.component';
 
 
 const importedModules = [
@@ -33,13 +34,15 @@ const importedModules = [
 @NgModule({
   declarations: [
     PageHeaderComponent,
-    UserFormComponent
+    UserFormComponent,
+    QuantityStepperComponent
   ],
   imports: importedModules,
   exports: [
     ...importedModules,
     PageHeaderComponent,
-    UserFormComponent
+    UserFormComponent,
+    QuantityStepperComponent
   ],
   providers: [UserFormService]
 })

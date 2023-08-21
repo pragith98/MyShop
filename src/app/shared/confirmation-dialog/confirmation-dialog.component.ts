@@ -20,15 +20,28 @@ export class ConfirmationDialogComponent {
   config: any = {
     create: {
       action: 'Create',
-      message: 'create',
+      message: 'create this?',
       confirmationButtonText: 'Create',
       confirmationButtonColor: 'primary',
     },
     update: {
       action: 'Update',
-      message: 'update',
+      message: 'update this?',
       confirmationButtonText: 'Update',
       confirmationButtonColor: 'primary',
+    },
+    addToCart: {
+      action: 'Add to cart',
+      message: 'add this to cart?',
+      confirmationButtonText: 'Add',
+      confirmationButtonColor: 'primary',
+    },
+    deleteFromCart: {
+      action: 'Delete from cart',
+      message: 'delete this from cart?',
+      confirmationButtonText: 'Delete',
+      confirmationButtonColor: 'warn',
+      confirmationButtonIcon: 'delete',
     }
   }
 

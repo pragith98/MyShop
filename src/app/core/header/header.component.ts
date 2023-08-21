@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthState, UserState } from 'src/app/store';
+import { AuthState, CartState, UserState } from 'src/app/store';
 
 @Component({
   selector: 'app-header',
@@ -13,6 +13,7 @@ export class HeaderComponent {
     private router: Router,
     public authState: AuthState,
     public userState: UserState,
+    public cartState: CartState
   ) { }
 
   onClickViewProfile(): void {
@@ -38,6 +39,7 @@ export class HeaderComponent {
   onClickLogout(): void {
     this.authState.logout();
     this.userState.resetUser();
+    this.cartState.resetCart();
     this.navigateToHome();
   }
   

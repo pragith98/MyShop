@@ -5,5 +5,16 @@ export interface Product {
     price: number,
     brand: string,
     category: string,
-    thumbnail: string
+    thumbnail: string,
+    stock: number
+}
+
+interface Products {
+    id: number,
+    quantity: number
+}
+
+export interface ProductToCart {
+    userId: number, 
+    products: Products[]
 }

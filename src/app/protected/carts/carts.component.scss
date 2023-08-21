@@ -1,0 +1,23 @@
+@import '../../../scss/card-style';
+
+.card-item-list {
+    @include card-position;
+    box-shadow: none;
+}
+
+.quantity-section {
+    padding-top: 25px;
+}
+
+.amount-table {
+    width: 100%;
+    
+    .left-column {
+        text-align: right;
+    }
+
+    .right-column {
+        width: 200px;
+        padding-left: 10px;
+    }
+}

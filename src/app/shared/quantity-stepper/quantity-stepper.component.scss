@@ -1,0 +1,19 @@
+.quantity-button {
+    height: 55px;
+    border-radius: 5px !important;
+    box-shadow: none;
+}
+
+.quantity-operations {
+    display: flex;
+    flex-direction: row;
+}
+
+.quantity-text {
+    width: 120px;
+    margin: 0 5px;
+    
+    input {
+        text-align: center;
+    }
+}

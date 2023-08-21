@@ -20,6 +20,46 @@
     }
 
     .details-section {
-        margin: 10px;
+        width: 100%;
+        margin-left: 15px;
+    }
+}
+
+.add-to-cart-section {
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 10px;
+    border: solid 1px rgb(222, 222, 222);
+
+    table {
+        width: 100%;
+    }
+
+    .quantity-section {
+        width: 50%;
+    }
+
+    // .quantity-operations {
+    //     display: flex;
+    //     flex-direction: row;
+    // }
+
+    // .quantity-button {
+    //     height: 55px;
+    //     border-radius: 5px;
+    //     box-shadow: none;
+    // }
+
+    // .quantity-text {
+    //     width: 120px;
+    //     margin: 0 5px;
+        
+    //     input {
+    //         text-align: center;
+    //     }
+    // }
+
+    .add-cart-button {
+        width: 100%;        
     }
 }

@@ -6,10 +6,12 @@ import {
 import { Router } from '@angular/router';
 import { 
   UserState, 
-  AuthState 
+  AuthState,
+  CartState
 } from 'src/app/store';
 import { User } from '../types';
 import { ConfirmationService } from 'src/app/core/services/confirmation.service';
+import { UserApiService } from '../apis/user-api.service';
 
 @Component({
   selector: 'app-auth',
@@ -36,7 +38,9 @@ export class AuthComponent {
     private authState: AuthState,
     private router: Router,
     private userState: UserState,
-    private confirmation: ConfirmationService
+    private cartState: CartState,
+    private confirmation: ConfirmationService,
+    private userApiService: UserApiService
   ) { }
   
   onClickLogin(): void {
@@ -48,6 +52,7 @@ export class AuthComponent {
       this.authState.login(formData)
         .subscribe(data => {
           this.userState.getUser(data.id);
+          this.cartState.fetchCart(data.id);
           this.router.navigate(['']);
         });
     }
@@ -61,12 +66,12 @@ export class AuthComponent {
     this.confirmation.getConfirmation(formData.firstName,'create')
       .subscribe(response => {
         if(response)
-          this.userState.createUser(formData)
+          this.userApiService.createUser(formData)
             .subscribe(() => this.router.navigate(['']));
       })
   }
 
-  onCanceled() {
+  onCanceled(): void {
     this.isRegister = false;
   }
 }

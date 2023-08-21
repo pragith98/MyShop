@@ -56,10 +56,10 @@ export class UserState extends NgxsDataRepository<UserStateModel>{
   /**
    * Retrieves user from current state.
    */
-    @Computed()
-    get getAvailableUser(): User {
-      return this.ctx.getState().user;
-    }
+  @Computed()
+  get getAvailableUser(): User {
+    return this.ctx.getState().user;
+  }
 
   /**
    * Fetch user.
@@ -96,23 +96,6 @@ export class UserState extends NgxsDataRepository<UserStateModel>{
   @DataAction()
   resetUser(): void {
     this.reset();
-  }
-
-  /**
-   * Performs user-creation by providing user data. if creation is successful,
-   * add new user to the state.
-   * @param user 
-   * @returns {Observable<User>}
-   */
-  //TODO: remove function. don't need to store created user in state
-  @DataAction()
-  createUser(@Payload('user') user: User): Observable<User> {
-    return this.apiService.createUser(user)
-      .pipe(tap(user => {
-        this.ctx.setState({
-          user
-        });
-      }));
   }
 
   /**
