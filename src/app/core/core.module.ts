@@ -10,11 +10,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatBadgeModule } from '@angular/material/badge';
+import { FooterComponent } from './footer/footer.component';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     CommonModule,
@@ -24,11 +27,13 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatIconModule,
     MatButtonModule,
     MatDialogModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatCardModule
   ],
   providers: [],
   exports: [
     HeaderComponent,
+    FooterComponent
   ]
 })
 export class CoreModule { }
