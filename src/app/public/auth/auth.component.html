@@ -35,5 +35,5 @@
     </mat-card-content>
 </mat-card>
 
-<app-user-form [formAction]="'Register'" (formData)='createUser($event)' 
+<app-user-form [formAction]="'Register'" (formData)='onCreateUser($event)' 
 (isCanceled)='onCanceled()' *ngIf="isRegister"></app-user-form>

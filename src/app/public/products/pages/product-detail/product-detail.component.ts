@@ -8,12 +8,7 @@ import {
 } from '@angular/router';
 import { ProductsService } from '../../products.service';
 import { Product } from 'src/app/public/types';
-import { 
-  AuthState, 
-  CartState, 
-  UserState 
-} from 'src/app/store';
-import { ConfirmationService } from 'src/app/core/services/confirmation.service';
+import { AuthState } from 'src/app/store';
 
 
 @Component({
@@ -31,11 +26,8 @@ export class ProductDetailComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private service: ProductsService,
-    private cartState: CartState,
     private router: Router,
-    private userState: UserState,
     public authState: AuthState,
-    private confirmationService: ConfirmationService
   ) { }
 
   ngOnInit(): void {
@@ -54,25 +46,16 @@ export class ProductDetailComponent implements OnInit {
   setProductValues(value: number): void {
     this.quantity = value; //set quantity
     
-    //set total
     if(this.product)
-      this.total = this.quantity*this.product?.price;
+      this.total = this.quantity*this.product?.price; //set total
   }
 
   onClickAddToCart(): void {
     if(this.product) {
-      const product: any = {
-        userId: this.userState.getAvailableUser.id,
-        products: [{
-          id: this.product?.id,
-          quantity: this.quantity
-        }]
-      };
-      this.confirmationService.getConfirmation(this.product.title, 'addToCart')
-        .subscribe(response => {
-          if(response)
-            this.cartState.addCartItem(product);
-        });
+      this.service.addToCart(
+        this.product, 
+        this.quantity
+      );
     }
   }
 

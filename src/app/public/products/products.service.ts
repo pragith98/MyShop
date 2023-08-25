@@ -1,12 +1,25 @@
 import { Injectable } from '@angular/core';
-import { ProductState } from 'src/app/store';
-import { Product } from 'src/app/public/types';
+import { 
+  CartState, 
+  ProductState, 
+  UserState 
+} from 'src/app/store';
+import { 
+  Product, 
+  ProductToCart
+} from 'src/app/public/types';
 import { Observable } from 'rxjs';
+import { ConfirmationService } from 'src/app/core/services/confirmation.service';
 
 @Injectable()
 export class ProductsService {
 
-  constructor(private productState: ProductState) { }
+  constructor(
+    private productState: ProductState,
+    private confirmation: ConfirmationService,
+    private cartState: CartState,
+    private userState: UserState
+  ) { }
 
   /**
  * get selected product from state
@@ -37,6 +50,24 @@ export class ProductsService {
         product.price >= minPrice && 
         product.price <= maxPrice
       );
+  }
+
+  addToCart(
+    product: Product, 
+    quantity: number
+  ): void {
+    const productWithUser: ProductToCart = {
+      userId: this.userState.getAvailableUser.id,
+      products: [{
+        id: product.id,
+        quantity: quantity
+      }]
+    };
+    this.confirmation.getConfirmation(product.title, 'addToCart')
+      .subscribe(response => {
+        if(response)
+          this.cartState.addCartItem(productWithUser);
+      });
   }
   
 }

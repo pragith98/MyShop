@@ -80,7 +80,10 @@ export class UserFormComponent implements OnInit{
   onClickSubmit(): void {
     if(this.userForm.valid) {
       this.formData.emit(
-        this.service.formatData(this.userID, this.userForm.value));
+        this.service.formatData(
+          this.userID, 
+          this.userForm.value
+        ));
     }
   }
 

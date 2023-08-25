@@ -9,6 +9,16 @@ interface ConfirmationDetails {
   content: any
 }
 
+const defaultConfirmationDialog = {
+  action: '',
+  message: '',
+  ConfirmationButtonVisible: true,
+  ConfirmationButtonText: '',
+  confirmationButtonColor: 'primary',
+  confirmationButtonIconVisible: false,
+  confirmationButtonIcon: '',
+}
+
 
 @Component({
   selector: 'app-confirmation-dialog',
@@ -23,28 +33,30 @@ export class ConfirmationDialogComponent {
 
   config: any = {
     create: {
+      ...defaultConfirmationDialog,
       action: 'Create',
       message: 'create this?',
       confirmationButtonText: 'Create',
-      confirmationButtonColor: 'primary',
     },
     update: {
+      ...defaultConfirmationDialog,
       action: 'Update',
       message: 'update this?',
       confirmationButtonText: 'Update',
-      confirmationButtonColor: 'primary',
     },
     addToCart: {
+      ...defaultConfirmationDialog,
       action: 'Add to cart',
       message: 'add this to cart?',
       confirmationButtonText: 'Add',
-      confirmationButtonColor: 'primary',
     },
     deleteFromCart: {
+      ...defaultConfirmationDialog,
       action: 'Delete from cart',
       message: 'delete this from cart?',
       confirmationButtonText: 'Delete',
       confirmationButtonColor: 'warn',
+      confirmationButtonIconVisible: true,
       confirmationButtonIcon: 'delete',
     }
   }

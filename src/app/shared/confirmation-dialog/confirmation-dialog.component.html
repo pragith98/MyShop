@@ -7,10 +7,11 @@
 </div>
 <div mat-dialog-actions align="end">
     <button mat-flat-button mat-dialog-close>Cancel</button>
-    <button mat-flat-button (click)="onClickConfirm()" cdkFocusInitial
+    <button *ngIf="confirmationDetails.ConfirmationButtonVisible" 
+        mat-flat-button (click)="onClickConfirm()" cdkFocusInitial
         color="{{confirmationDetails.confirmationButtonColor}}">
         {{confirmationDetails.confirmationButtonText}}
-        <mat-icon *ngIf="confirmationDetails?.confirmationButtonIcon">
+        <mat-icon *ngIf="confirmationDetails.confirmationButtonIconVisible">
             {{confirmationDetails.confirmationButtonIcon}}
         </mat-icon>
     </button>

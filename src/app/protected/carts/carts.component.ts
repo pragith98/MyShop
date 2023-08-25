@@ -4,9 +4,9 @@ import {
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { ConfirmationService } from 'src/app/core/services/confirmation.service';
 import { ProductInCart } from 'src/app/public/types';
 import { CartState } from 'src/app/store';
+import { CartsService } from './carts.service';
 
 @Component({
   selector: 'app-carts',
@@ -27,7 +27,7 @@ export class CartsComponent {
 
   constructor(
     public cartState: CartState,
-    private confirmation: ConfirmationService,
+    private service: CartsService
   ) { }
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -42,11 +42,10 @@ export class CartsComponent {
   }
 
   onClickRemove(id: number): void {
-    this.confirmation.getConfirmation(id, 'deleteFromCart')
+    this.service.removeCartItem(id)
       .subscribe(response => {
         if(response)
-          this.cartState.removeCartItemById(id)
-            .subscribe(() => this.dataSource.data = this.cartState.cartItems);
+          this.dataSource.data = this.cartState.cartItems;
       });
   }
 
