@@ -15,6 +15,7 @@ import {
   CartState
 } from 'src/app/store';
 import { CoreModule } from './core/core.module';
+import { CategoryState } from './store/category.state';
 
 
 
@@ -30,7 +31,8 @@ import { CoreModule } from './core/core.module';
       ProductState,
       AuthState,
       UserState,
-      CartState
+      CartState,
+      CategoryState
     ]),
     NgxsLoggerPluginModule.forRoot(),
     HttpClientModule,

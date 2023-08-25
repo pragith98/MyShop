@@ -13,7 +13,11 @@ interface ConfirmationDetails {
 @Component({
   selector: 'app-confirmation-dialog',
   templateUrl: './confirmation-dialog.component.html',
-  styleUrls: ['./confirmation-dialog.component.scss']
+  styles: [`
+    .content {
+      text-align: center;
+    }
+  `]
 })
 export class ConfirmationDialogComponent {
 

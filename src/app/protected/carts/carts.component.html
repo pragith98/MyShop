@@ -11,6 +11,10 @@
                 placeholder="Ex. MacBook" #input>
         </mat-form-field>
 
+        <!-- loading spinner -->
+        <app-loading-spinner *ngIf="!cartState.isLoaded">
+        </app-loading-spinner> 
+
         <table mat-table [dataSource]="dataSource">
             <ng-container matColumnDef="title">
                 <th mat-header-cell *matHeaderCellDef> Title </th>

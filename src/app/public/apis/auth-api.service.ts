@@ -25,7 +25,7 @@ export class AuthenticationApiService {
     return this.apiProvider.post(
       EndPoints.login,
       loginCredentials
-    )
+    );
   }
 
 }

@@ -19,11 +19,11 @@ export class QuantityStepperComponent {
 
   onClickAdd(): void {
     if(this.stock > this.quantity)
-    this.value.emit(++this.quantity);
+      this.value.emit(++this.quantity);
   }
 
   onClickRemove(): void {
     if(this.quantity > 1)
-    this.value.emit(--this.quantity);
+      this.value.emit(--this.quantity);
   }
 }

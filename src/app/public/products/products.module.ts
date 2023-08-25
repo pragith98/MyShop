@@ -8,6 +8,8 @@ import { ProductsService } from './products.service';
 import { TextShorterPipe } from './text-shorter.pipe';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ProductsComponent } from './products.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSliderModule } from '@angular/material/slider';
 
 
 
@@ -21,6 +23,8 @@ import { ProductsComponent } from './products.component';
   imports: [
     SharedModule,
     ProductsRoutingModule,
+    MatSelectModule,
+    MatSliderModule
   ],
   providers: [ProductsService]
 })

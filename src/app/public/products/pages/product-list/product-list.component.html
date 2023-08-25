@@ -1,28 +1,81 @@
-<mat-card class="product-list">
-    <mat-card-header>
-        <mat-card-title>List</mat-card-title>
-    </mat-card-header>
-    <mat-card-content class="products-loading-place">
-        
-        <!-- product cards -->
-        <mat-card class="product-card" 
-            *ngFor="let product of productState.getProducts">
-            <img mat-card-image src="{{product.thumbnail}}">
-            <mat-card-content class="product-card-details">
-                <span class="mat-headline-6">{{product.title | textShorter: 25}}</span>
-                <p>
-                    {{product.brand}} <br>
-                    {{product.category}}
-                </p>
-                <p class="price">{{product.price | currency}}</p>
-            </mat-card-content>
-            <mat-card-actions>
-                <button class="see-details-button" mat-stroked-button 
-                    color="primary" (click)="onClickProduct(product.id)">
-                    See details
-                </button>
-            </mat-card-actions>
-        </mat-card>
+<div class="product-list-page">
+    
+    <!-- filter -->
+    <mat-card class="filter">
+        <mat-card-header>
+            <mat-card-title>Filter</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            
+            <mat-form-field appearance="outline">
+                <mat-label>Categories</mat-label>
+                <mat-select [(value)]="selectedCategory" 
+                    (selectionChange)="filterByCategory($event.value)">
+                    <mat-option 
+                        *ngFor="let category of categoryState.categories" 
+                        [value]="category">
+                        {{category}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
 
-    </mat-card-content>
-</mat-card>
+            <mat-form-field appearance="outline">
+                <mat-label>Product name</mat-label>
+                <input matInput (keyup)="filterByName($event)">
+            </mat-form-field>
+            <span class="mat-body-2">
+                Min price <b>{{minPrice}}</b> - Max price <b>{{maxPrice}}</b>
+            </span>
+            <mat-slider min="0" max="5000" discrete (change)="filterByPrice()">
+                <input matSliderStartThumb [(ngModel)]="minPrice">
+                <input matSliderEndThumb [(ngModel)]="maxPrice">
+            </mat-slider>
+
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-flat-button color="primary" 
+                (click)="onClickResetFilters()">
+                Reset Filters
+            </button>
+        </mat-card-actions>
+    </mat-card>
+
+    <!-- products list -->
+    <mat-card class="product-list">
+        <mat-card-header>
+            <mat-card-title>List</mat-card-title>
+        </mat-card-header>
+
+        <!-- loading spinner -->
+        <app-loading-spinner *ngIf="!productState.isLoaded">
+        </app-loading-spinner> 
+
+        <mat-card-content class="products-loading-place">
+
+            <!-- product cards -->
+            <mat-card class="product-card" 
+                *ngFor="let product of products">
+                <img mat-card-image src="{{product.thumbnail}}">
+                <mat-card-content class="product-card-details">
+                    <span class="mat-headline-6">
+                        {{product.title | textShorter: 20}}
+                    </span>
+                    <p>
+                        {{product.brand}} <br>
+                        {{product.category}}
+                    </p>
+                    <p class="price">{{product.price | currency}}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button class="see-details-button" mat-stroked-button 
+                        color="primary" (click)="onClickProduct(product.id)">
+                        See details
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+    
+        </mat-card-content>
+    </mat-card>
+
+</div>
+

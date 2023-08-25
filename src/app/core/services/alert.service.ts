@@ -16,6 +16,6 @@ export class AlertService {
     this.snackBar.open(message, '', {
       duration: 3000,
       panelClass: [this.config[status]]
-    })
+    });
   }
 }

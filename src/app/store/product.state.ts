@@ -16,7 +16,8 @@ import {
 
 
 interface ProductStateModel {
-  products: Product[]
+  products: Product[],
+  isLoaded: boolean
 }
 
 @Persistence([{
@@ -27,7 +28,8 @@ interface ProductStateModel {
 @State<ProductStateModel>({
   name: 'productsList',
   defaults: {
-    products: []
+    products: [],
+    isLoaded: false
   }
 })
 
@@ -40,11 +42,21 @@ export class ProductState extends NgxsDataRepository<ProductStateModel>{
     super();
   }
 
+
+  /**
+   * get product loading status.
+   */
+  @Computed()
+  get isLoaded(): boolean {
+    return this.ctx.getState().isLoaded;
+  }
+
   /**
    * Retrieves products from current state.
    */
   @Computed()
-  get getProducts(): Product[] {
+  get products(): Product[] {
+    this.getAllProducts();
     return this.ctx.getState().products;
   }
 
@@ -53,11 +65,21 @@ export class ProductState extends NgxsDataRepository<ProductStateModel>{
    * @returns {Observable<Product>}
    */
   @DataAction()
-  fetchProducts(): Observable<Product[]> {
-    return this.apiService.getProducts()
-      .pipe(tap(products => this.ctx.setState({
-        products: products
-      })));
+  fetchProducts(category?: string): Observable<Product[]> {
+    this.resetProductState();
+
+    const products = category ?
+      this.apiService.getProductsByCategory(category) :
+      this.apiService.getProducts();
+    
+    return products.pipe(tap(products => this.ctx.setState({
+      products: products,
+      isLoaded: true
+    })));
+  }
+
+  private resetProductState(): void {
+    this.reset();
   }
 
   /**
@@ -74,8 +96,7 @@ export class ProductState extends NgxsDataRepository<ProductStateModel>{
    * state if data already has been fetched to local storage. 
    * If already not fetched, perform function to fetch products data.
    */
-  @DataAction()
-  getAllProducts(): void {
+  private getAllProducts(): void {
     if (!this.haveFetched())
       this.fetchProducts();
   }

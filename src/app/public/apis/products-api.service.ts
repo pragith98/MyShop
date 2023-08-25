@@ -30,4 +30,15 @@ export class ProductsApiService {
       .pipe(map(response => response.products));
   }
 
+  /**
+   * Retrieves products of a category by calling API.
+   * @returns {Observable<Product[]>}
+   */
+  getProductsByCategory(category: string): Observable<Product[]> {
+    return this.apiProvider.get<ApiResponse>(
+      `${EndPoints.getAllProductsByCategory}/${category}`
+    )
+      .pipe(map(response => response.products));
+  }
+
 }

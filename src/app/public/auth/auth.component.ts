@@ -31,7 +31,7 @@ export class AuthComponent {
       '',
       Validators.required,
     ]
-  })
+  });
 
   constructor(
     private nonNullableFormBuilder: NonNullableFormBuilder,
@@ -68,7 +68,7 @@ export class AuthComponent {
         if(response)
           this.userApiService.createUser(formData)
             .subscribe(() => this.router.navigate(['']));
-      })
+      });
   }
 
   onCanceled(): void {

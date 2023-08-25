@@ -20,6 +20,6 @@ export class ConfirmationService {
         action: action
       }
     });
-    return dialogRef.afterClosed()
+    return dialogRef.afterClosed();
   }
 }

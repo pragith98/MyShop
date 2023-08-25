@@ -74,7 +74,8 @@ export class ApiProviderService {
     return this.http.patch<T>(
       `${this.apiBaseAddress}/${endpoint}`,
       body
-    ).pipe(
+    )
+    .pipe(
       tap(() => this.alert.alertMessage(
         'success',
         `${endpoint} update successful`

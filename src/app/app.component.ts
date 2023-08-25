@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { AuthState, ProductState, UserState } from './store';
+import {
+  CategoryState 
+} from './store';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +9,10 @@ import { AuthState, ProductState, UserState } from './store';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'MyShop';
 
   constructor(
-    private productState: ProductState,
+    private categoryState: CategoryState
   ) { 
-    this.productState.getAllProducts();
+    this.categoryState.fetchCategories();
   }
 }

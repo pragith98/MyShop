@@ -45,8 +45,8 @@ export class CartsComponent {
     this.confirmation.getConfirmation(id, 'deleteFromCart')
       .subscribe(response => {
         if(response)
-        this.cartState.removeCartItemById(id)
-          .subscribe(() => this.dataSource.data = this.cartState.cartItems);
+          this.cartState.removeCartItemById(id)
+            .subscribe(() => this.dataSource.data = this.cartState.cartItems);
       });
   }
 

@@ -1,4 +1,26 @@
+.product-list-page {
+    display: flex;
+    flex-direction: row;
+}
+
+.filter {
+    width: 20%;
+    margin: 10px 10px 0 0;
+    height: 340px;
+    box-shadow: none;
+    border: solid 1px rgb(222, 222, 222);
+
+    mat-form-field {
+        width: 100%;
+    }
+
+    mat-slider {
+        width: 95%;
+    }
+}
+
 .product-list {
+    width: 80%;
     box-shadow: none;
 }
 

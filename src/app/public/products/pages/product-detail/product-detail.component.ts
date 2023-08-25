@@ -44,7 +44,7 @@ export class ProductDetailComponent implements OnInit {
         this.product = this.service.getSelectedProduct(params['id']);
         this.total = this.product.price;
         this.stock = this.product.stock;
-      })
+      });
   }
   
   onClickBack(): void {
@@ -56,7 +56,7 @@ export class ProductDetailComponent implements OnInit {
     
     //set total
     if(this.product)
-      this.total = this.quantity*this.product?.price
+      this.total = this.quantity*this.product?.price;
   }
 
   onClickAddToCart(): void {

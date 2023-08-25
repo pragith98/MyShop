@@ -20,7 +20,7 @@ export class UserApiService {
   getUserById(id: number): Observable<User> {
     return this.apiProvider.get(
       `${EndPoints.getUserById}/${id}`
-    )
+    );
   }
 
   /**

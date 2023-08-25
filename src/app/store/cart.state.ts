@@ -30,7 +30,8 @@ const defaultCart: Cart = {
 }
 
 interface CartStateModel {
-  cart: Cart
+  cart: Cart,
+  isLoaded: boolean
 }
 
 @Persistence([{
@@ -41,7 +42,8 @@ interface CartStateModel {
 @State<CartStateModel>({
   name: 'cartList',
   defaults: {
-    cart: defaultCart
+    cart: defaultCart,
+    isLoaded: false
   }
 })
 
@@ -52,6 +54,14 @@ export class CartState extends NgxsDataRepository<CartStateModel>{
 
   constructor(private apiService: CartApiService) {
     super();
+  }
+
+  /**
+   * get cart loading status.
+   */
+  @Computed()
+  get isLoaded(): boolean {
+    return this.ctx.getState().isLoaded;
   }
 
   /**
@@ -76,7 +86,8 @@ export class CartState extends NgxsDataRepository<CartStateModel>{
   fetchCart(userId: number): Observable<Cart> {
     return this.apiService.getCartByUserId(userId)
       .pipe(tap(cart => this.ctx.setState({
-        cart: cart
+        cart: cart,
+        isLoaded: true
       })));
   }
 
@@ -87,7 +98,7 @@ export class CartState extends NgxsDataRepository<CartStateModel>{
    * @returns 
    */
   private updateCartValues(cart: Cart): Cart {
-    let cartData: Cart = {
+    const cartData: Cart = {
       ...cart,
       total: 0,
       totalProducts: 0,
@@ -124,7 +135,8 @@ export class CartState extends NgxsDataRepository<CartStateModel>{
           ]
         };
         this.ctx.setState({
-          cart: this.updateCartValues(updatedCart)
+          cart: this.updateCartValues(updatedCart),
+          isLoaded: true
         });
       }));
   }
@@ -143,7 +155,8 @@ export class CartState extends NgxsDataRepository<CartStateModel>{
       }
     ).pipe(tap(() =>{
       this.ctx.setState({
-        cart: this.updateCartValues(updatedCart)
+        cart: this.updateCartValues(updatedCart),
+        isLoaded: true
       });
     }));
   }
@@ -180,7 +193,8 @@ export class CartState extends NgxsDataRepository<CartStateModel>{
       }
     ).pipe(tap(() =>{
       this.ctx.setState({
-        cart: this.updateCartValues(updatedCart)
+        cart: this.updateCartValues(updatedCart),
+        isLoaded: true
       });
     }));
   }
